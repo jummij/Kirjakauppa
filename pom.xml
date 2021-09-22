@@ -32,10 +32,6 @@
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
 		
-<<<<<<< HEAD
-=======
-		
->>>>>>> 081392d1c2e206aecedf764cae840a756395e4cc
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
