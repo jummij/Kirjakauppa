@@ -1,13 +1,14 @@
-package swd20.Bookstore.domain.web;
+package swd20.Bookstore.web;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class BookController {
+	
 	@RequestMapping("/index") 
 	public String index() {
-		return "tervetuloa";
+		return "Tervetuloa";
 	}
 
 }
