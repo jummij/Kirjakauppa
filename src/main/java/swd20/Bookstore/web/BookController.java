@@ -49,12 +49,12 @@ import swd20.Bookstore.domain.BookRepository;
 	public String deleteBook(@PathVariable("id") Long id, Model model) {
 
 		bookRepo.deleteById(id);
-		return "redirect:booklist";
+		return "redirect:/booklist";
 	}
 	
-	@RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
-	public String editBook(@PathVariable("id") Long id, @RequestBody Book book) {
-		bookRepo.findById(id);
+	@RequestMapping(value = "/edit/{id}")
+	public String editBook(@PathVariable("id") Long id, Model model) {
+		model.addAttribute("book", bookRepo.findById(id));
 		return "editbook";
 	}
 }
