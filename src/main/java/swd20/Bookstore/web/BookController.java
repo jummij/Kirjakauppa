@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import swd20.Bookstore.domain.Book;
 import swd20.Bookstore.domain.BookRepository;
+import swd20.Bookstore.domain.Category;
+import swd20.Bookstore.domain.CategoryRepository;
 
 @Controller
 	public class BookController {
@@ -32,7 +34,7 @@ import swd20.Bookstore.domain.BookRepository;
 		return "booklist";
 	}
 		
-	@RequestMapping(value = "/add") // new student lomake
+	@RequestMapping(value = "/add") // new book lomake
 	public String addBook(Model model) {
 			model.addAttribute("book", new Book());
 			return "addbook";
@@ -57,4 +59,14 @@ import swd20.Bookstore.domain.BookRepository;
 		model.addAttribute("book", bookRepo.findById(id));
 		return "editbook";
 	}
+	
+	/*@Autowired
+	CategoryRepository catRepo;
+	
+	@RequestMapping(value = "/categorylist", method = RequestMethod.GET)
+	public String categoryList(Model model) {
+		model.addAttribute("category", new Category());
+		model.addAttribute("categories", catRepo.findAll());
+		return "categorylist";
+	} */ //tehty oma erillinen controller ja siirretty Method sinne
 }

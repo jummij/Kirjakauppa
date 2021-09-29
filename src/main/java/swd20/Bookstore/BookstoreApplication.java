@@ -24,6 +24,8 @@ public class BookstoreApplication {
 	@Bean
 	public CommandLineRunner bookDemo(BookRepository bookRepo, CategoryRepository catRepo) {
 		return (args) -> {
+			
+			
 			log.info("saving book data");
 			Book book1 = new Book("Ohana", "Dung Pham", 2018, "293048-12", 10.90);
 			Book book2 = new Book ("Tähtitaivas", "Jane Doe", 1989, "734579-02", 12.50);
