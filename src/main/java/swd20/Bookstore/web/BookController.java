@@ -1,20 +1,19 @@
 package swd20.Bookstore.web;
 
 import java.util.List;
-import java.util.Map;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import swd20.Bookstore.domain.Book;
 import swd20.Bookstore.domain.BookRepository;
-import swd20.Bookstore.domain.Category;
-import swd20.Bookstore.domain.CategoryRepository;
+
 
 @Controller
 	public class BookController {
@@ -33,6 +32,20 @@ import swd20.Bookstore.domain.CategoryRepository;
 		model.addAttribute("books", bookRepo.findAll());
 		return "booklist";
 	}
+	
+	//REST service, get all books
+	@RequestMapping(value="/books", method=RequestMethod.GET)
+	public @ResponseBody List<Book> booklistRest() {
+		return (List<Book>) bookRepo.findAll();
+	}
+	
+	//REST service, get book by ID
+	@RequestMapping(value="/books/{id}", method=RequestMethod.GET)
+	public @ResponseBody Optional<Book> findBookRest(@PathVariable("id") Long id)
+	{
+		return bookRepo.findById(id);
+	}
+	
 		
 	@RequestMapping(value = "/add") // new book lomake
 	public String addBook(Model model) {
@@ -60,13 +73,4 @@ import swd20.Bookstore.domain.CategoryRepository;
 		return "editbook";
 	}
 	
-	/*@Autowired
-	CategoryRepository catRepo;
-	
-	@RequestMapping(value = "/categorylist", method = RequestMethod.GET)
-	public String categoryList(Model model) {
-		model.addAttribute("category", new Category());
-		model.addAttribute("categories", catRepo.findAll());
-		return "categorylist";
-	} */ //tehty oma erillinen controller ja siirretty Method sinne
 }

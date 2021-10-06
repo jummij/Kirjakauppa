@@ -7,6 +7,7 @@
 </head>
 <body>
 	<h1>Books</h1>
+	<a href=/categorylits>Categories</a>
     <table class="table table-striped">
 		<tr>
 			<th>Id</th>
@@ -15,6 +16,8 @@
 		    <th>Year</th>
 		    <th>ISBN</th>
 		    <th>Price</th>
+		    <th>Category</th>
+		    
 		</tr>  
     	<tr th:each = "book : ${books}">
     		<td th:text="${book.id}"></td>
@@ -23,8 +26,9 @@
     		<td th:text="${book.year}"></td>
     		<td th:text="${book.isbn}"></td>
     		<td th:text="${book.price}"></td>
+    		<td th:text="${book.category.name}"></td>
  			<td><a class="btn btn-danger" th:href="@{/delete/{id}(id=${book.id})}">Delete</a></td>  
- 			<td><a class="btn btn-secondary" th:href="@{/edit/{id}(id=${book.id})}">Edit</a></td>      	
+ 			<td><a  th:href="@{/edit/{id}(id=${book.id})}">Edit</a></td>      	
  			
  					
     	</tr>

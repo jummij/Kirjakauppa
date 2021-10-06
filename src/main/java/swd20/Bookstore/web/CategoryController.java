@@ -6,7 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import swd20.Bookstore.domain.Book;
+
 import swd20.Bookstore.domain.Category;
 import swd20.Bookstore.domain.CategoryRepository;
 
@@ -19,7 +19,7 @@ public class CategoryController {
 	
 	@RequestMapping(value = "/categorylist", method = RequestMethod.GET)
 	public String categoryList(Model model) {
-		model.addAttribute("category", new Category());
+		model.addAttribute("category", new Category()); //tää rivi oli turha voi poistaa
 		model.addAttribute("categories", catRepo.findAll());
 		return "categorylist";
 	}
@@ -30,10 +30,10 @@ public class CategoryController {
 			return "addcategory";
 	}
 	
-	@RequestMapping(value = "/savecat", method = RequestMethod.POST)
+	@RequestMapping(value = "/savecat", method = RequestMethod.POST) 
 	public String addCategory(Category category) {
 
-		catRepo.save(category);
+		catRepo.save(category); // .save luo uuden jos ei ole olemassa, muuten päivittää olemassa olevan tietoja.
 		return "redirect:categorylist";
 	
 }

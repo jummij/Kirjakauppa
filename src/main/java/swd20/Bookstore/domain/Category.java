@@ -1,29 +1,35 @@
 package swd20.Bookstore.domain;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Category {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	
+	
 	private long cId;
 	private String name;
-	public Category(long cId, String name) {
-		super();
-		this.cId = cId;
-		this.name = name;
-	}
+
+	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "category")
+	private List<Book> books;
+	
+	
 	public Category(String name) {
 		super();
 		this.name = name;
 	}
-	public Category() {
-		super();
-	}
+	
+	public Category() {}
+	
 	public long getcId() {
 		return cId;
 	}
@@ -35,6 +41,14 @@ public class Category {
 	}
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+
+	public List<Book> getBooks() {
+		return books;
+	}
+	public void setBooks(List<Book> books) {
+		this.books = books;
 	}
 	@Override
 	public String toString() {
