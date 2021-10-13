@@ -1,13 +1,26 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.ord/thymeleaf-extras-spingsecurity5">
 <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
 <head>
     <title>Booklist</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+     <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
 </head>
 <body>
+<div class="container">
+	<div>
 	<h1>Books</h1>
-	<a href=/categorylits>Categories</a>
+	</div>
+	<div>
+		<h3 th:inline="text">Welcome [[${#httpServletRequest.remoteUser}]]</h3>
+	</div>
+	<div  style="padding-right:20px 0">
+		<form th:action="@{/logout}" method="post">
+			<input type="submit" value="Sign Out" class="btn btn-sm btn-danger"/>
+		</form>
+	</div>
+	
+	
     <table class="table table-striped">
 		<tr>
 			<th>Id</th>
@@ -17,6 +30,8 @@
 		    <th>ISBN</th>
 		    <th>Price</th>
 		    <th>Category</th>
+		    <th></th>
+		    <th></th>
 		    
 		</tr>  
     	<tr th:each = "book : ${books}">
@@ -33,6 +48,7 @@
  					
     	</tr>
      </table>
-	 <a class="btn btn-success" href="/add" >Add book</a>    	
+	 <a class="btn btn-success" href="/add" >Add book</a>    	<a href=/categorylist>Categories</a>
+	 </div>
 </body>
 </html>
