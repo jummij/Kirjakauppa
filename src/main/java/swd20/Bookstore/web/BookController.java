@@ -61,7 +61,7 @@ import swd20.Bookstore.domain.BookRepository;
 		return "redirect:booklist";
 	}
 	
-	@PreAuthorize(value = "hasRole('ADMIN')") //vain ADMIN roolilla oikeus poistaa 
+	@PreAuthorize("hasAuthority('ADMIN')") //vain ADMIN roolilla oikeus poistaa 
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
 	public String deleteBook(@PathVariable("id") Long id, Model model) {
 
