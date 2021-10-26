@@ -7,11 +7,12 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+
 import swd20.Bookstore.domain.User;
 import swd20.Bookstore.domain.UserRepository;
 
 @Service
-public class UserDetailServiceImpl {
+public class UserDetailServiceImpl implements UserDetailsService{
 	private final UserRepository repository;
 
 	@Autowired
