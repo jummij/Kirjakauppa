@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import swd20.Bookstore.domain.Book;
 import swd20.Bookstore.domain.BookRepository;
+import swd20.Bookstore.domain.CategoryRepository;
 
 
 @Controller
@@ -26,6 +27,7 @@ import swd20.Bookstore.domain.BookRepository;
 	
 	@Autowired
 	BookRepository bookRepo;
+	CategoryRepository catRepo;
 	
 	@RequestMapping(value = "/booklist", method = RequestMethod.GET)
 	public String bookStoreList(Model model) {
@@ -51,8 +53,11 @@ import swd20.Bookstore.domain.BookRepository;
 	@RequestMapping(value = "/add") // new book lomake
 	public String addBook(Model model) {
 			model.addAttribute("book", new Book());
+			model.addAttribute("categories", catRepo.findAll());
 			return "addbook";
 	}
+	
+	
 	
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public String addBook(Book book) {
