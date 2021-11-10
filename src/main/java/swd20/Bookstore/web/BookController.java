@@ -27,6 +27,8 @@ import swd20.Bookstore.domain.CategoryRepository;
 	
 	@Autowired
 	BookRepository bookRepo;
+	
+	@Autowired
 	CategoryRepository catRepo;
 	
 	@RequestMapping(value = "/booklist", method = RequestMethod.GET)
